@@ -16,7 +16,7 @@ class EpsilonGreedy(object):
 
     def select_arm(self):
         if random.random() > self.epsilon:
-            return _max_index(self.values)
+            return self._max_index(self.values)
 
         return random.randrange(len(self.values))
 
@@ -26,5 +26,5 @@ class EpsilonGreedy(object):
         n = self.counts[chosen_arm]
         value = self.values[chosen_arm]
 
-        new_value = ((n-1) / float(n)) * values + (1 / float(n)) * reward
+        new_value = ((n-1) / float(n)) * value + (1 / float(n)) * reward
         self.values[chosen_arm] = new_value
